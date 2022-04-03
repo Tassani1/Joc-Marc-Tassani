@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://imatges/escenes/personatges/personatge.tscn" type="PackedScene" id=1]
+[ext_resource path="res://imatges/escenes/zona.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="zona" parent="." groups=["inici"] instance=ExtResource( 2 )]
+position = Vector2( 149, 113 )
+
+[node name="zona2" parent="." groups=["final"] instance=ExtResource( 2 )]
+position = Vector2( 261, 69 )
+
+[node name="personatge" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 0.996078, 0.996078, 1 )
+position = Vector2( -2, 1 )
+
+[connection signal="area_entered" from="personatge" to="personatge" method="_on_personatge_area_entered"]
+[connection signal="area_exited" from="personatge" to="personatge" method="_on_personatge_area_exited"]

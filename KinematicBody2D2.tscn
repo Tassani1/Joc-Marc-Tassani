@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://imatges/platformChar_idle.png" type="Texture" id=1]
+[ext_resource path="res://imatges/Characters/platformChar_walk1.png" type="Texture" id=2]
+[ext_resource path="res://imatges/Characters/platformChar_walk2.png" type="Texture" id=3]
+[ext_resource path="res://imatges/Characters/platformChar_jump.png" type="Texture" id=4]
+[ext_resource path="res://imatges/escenes/KinematicBody2D2.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "quiet",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "salta",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 32.5, 32 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D"]
+position = Vector2( 81, 91 )
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 17, 319 )
+frames = SubResource( 3 )
+animation = "salta"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 15.5, 328 )
+shape = SubResource( 4 )
